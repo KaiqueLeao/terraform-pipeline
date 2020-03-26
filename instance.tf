@@ -11,4 +11,11 @@ resource "aws_instance" "jenkins-istance" {
 
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
+
+  # execute script before create instance
+  user_data = data.template_file.user_data.rendered
+}
+
+data "template_file" "user_data" {
+  template = file("scripts/init-jenkins.tpl")
 }
