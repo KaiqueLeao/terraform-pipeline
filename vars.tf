@@ -5,12 +5,12 @@ variable "AWS_REGION" {
 
 # set default value to private key variable
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "mykey"
+  default = "mykeypair"
 }
 
 # set default value to public key variable
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "mykey.pub"
+  default = "mykeypair.pub"
 }
 
 # set default value to map variable
