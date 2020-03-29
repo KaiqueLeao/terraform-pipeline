@@ -3,6 +3,11 @@ variable "AWS_REGION" {
   default = "sa-east-1"
 }
 
+# set default value to instance type
+variable "INSTANCE_TYPE" {
+  default = "t2.micro"
+}
+
 # set default value to private key variable
 variable "PATH_TO_PRIVATE_KEY" {
   default = "mykeypair"
@@ -20,3 +25,4 @@ variable "AMIS" {
     sa-east-1 = "ami-07820a4443539a2b0"
   }
 }
+
