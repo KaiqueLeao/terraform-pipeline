@@ -14,6 +14,10 @@ resource "aws_instance" "jenkins-instance" {
 
   # execute script before create instance
   user_data = data.template_file.user_data.rendered
+
+  tags = {
+    Name = "jenkins-instance"
+  }
 }
 
 resource "aws_instance" "tomcat-instance" {
@@ -28,6 +32,10 @@ resource "aws_instance" "tomcat-instance" {
 
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
+
+  tags = {
+    Name = "tomcat-instance"
+  }
 
 }
 
