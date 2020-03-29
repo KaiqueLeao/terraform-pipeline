@@ -25,17 +25,22 @@ sudo mkdir /opt/maven
 sudo cd /opt/maven
 sudo wget -P /opt/maven/ http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 sudo tar -xvzf /opt/maven/apache-maven-3.6.3-bin.tar.gz -C /opt/maven
+sudo apt-get -y update
+sleep 60
 
 # set maven environment variable
-export M2_HOME=/opt/maven/apache-maven-3.6.3
-export M2=$M2_HOME/bin
-export PATH=$PATH:$M2_HOME:$M2
+sudo echo "export M2_HOME=/opt/maven/apache-maven-3.6.3" >> ~/.bash_profile 
+sudo echo "export M2=$M2_HOME/bin" >> ~/.bash_profile 
+sudo echo "export PATH=$PATH:$M2_HOME:$M2" >> ~/.bash_profile 
 
-# Download cli jenkins
-# sudo wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+# # Creating jenkins directory under /opt
+# sudo mkdir /opt/jenkins
 
-# Download git plugin
-# wget https://updates.jenkins.io/latest/github.hpi
+# # Download cli jenkins
+# sudo wget -P /opt/jenkins/ http://127.0.0.1:8080/jnlpJars/jenkins-cli.jar
 
-# install git plugin
-# java -jar jenkins-cli.jar -s http://localhost:8080/ -auth terraform-pipeline:terraform-pipeline  install-plugin github.hpi
+# # Download git plugin
+# sudo wget -P /var/lib/jenkins/plugins https://updates.jenkins.io/latest/github.hpi
+
+# # install git plugin
+# sudo java -jar jenkins-cli.jar -s http://127.0.0.1:8080/ install-plugin github

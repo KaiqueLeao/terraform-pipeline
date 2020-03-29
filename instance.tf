@@ -33,6 +33,9 @@ resource "aws_instance" "tomcat-instance" {
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
 
+  # execute script before create instance
+  user_data = data.template_file.user_data_tomcat.rendered
+
   tags = {
     Name = "tomcat-instance"
   }
@@ -42,4 +45,9 @@ resource "aws_instance" "tomcat-instance" {
 # template file for jenkins instance
 data "template_file" "user_data" {
   template = file("scripts/init-jenkins.tpl")
+}
+
+# template file for tomcat instance
+data "template_file" "user_data_tomcat" {
+  template = file("scripts/tomcat.tpl")
 }
