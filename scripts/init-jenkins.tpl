@@ -29,9 +29,10 @@ sudo apt-get -y update
 sleep 60
 
 # set maven environment variable
-sudo echo "export M2_HOME=/opt/maven/apache-maven-3.6.3" >> ~/.bash_profile 
-sudo echo "export M2=$M2_HOME/bin" >> ~/.bash_profile 
-sudo echo "export PATH=$PATH:$M2_HOME:$M2" >> ~/.bash_profile 
+export M2_HOME=/opt/maven/apache-maven-3.6.3
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2_HOME:$M2
+terraform apply
 
 # # Creating jenkins directory under /opt
 # sudo mkdir /opt/jenkins
