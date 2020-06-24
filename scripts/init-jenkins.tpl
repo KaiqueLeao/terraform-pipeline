@@ -12,6 +12,9 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum -y install jenkins
 
+# Download script s3 bucket
+sudo aws s3 cp s3://jenkins-kaique/static/config.xml /var/lib/jenkins/
+
 # Start jenkins service
 service jenkins start
 
@@ -32,7 +35,6 @@ sleep 60
 export M2_HOME=/opt/maven/apache-maven-3.6.3
 export M2=$M2_HOME/bin
 export PATH=$PATH:$M2_HOME:$M2
-terraform apply
 
 # # Creating jenkins directory under /opt
 # sudo mkdir /opt/jenkins
